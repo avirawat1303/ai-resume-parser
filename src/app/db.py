@@ -1,14 +1,14 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 import os
 
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./local.db")
 
-connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
+engine = create_engine(DATABASE_URL)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-engine = create_engine(DATABASE_URL, echo=False, future=True, connect_args=connect_args)
-SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
-Base = declarative_base()
+Base = declarative_base()  # ✅ define Base here
 
 def get_db():
     db = SessionLocal()
@@ -16,3 +16,8 @@ def get_db():
         yield db
     finally:
         db.close()
+
+def init_db():
+    from .models import Resume  # ✅ import here, inside function (avoids circular import)
+    Base.metadata.create_all(bind=engine)
+    print("✅ Database initialized successfully.")

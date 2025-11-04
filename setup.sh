@@ -1,24 +1,31 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Setting up AI Resume Parser..."
+echo "Setting up AI Resume Parser (Docker Version)..."
+
+echo "Stopping running containers (if any)..."
+docker compose down || true
 
 
-python -m venv .venv
-source .venv/bin/activate || source .venv/Scripts/activate
+echo "Building Docker images (no cache)..."
+docker compose build --no-cache
 
 
-echo "Installing dependencies..."
-pip install --upgrade pip
-pip install -r requirements.txt
+echo "Starting containers..."
+docker compose up -d
 
 
-if [ ! -f ".env" ]; then
-  cp .env.example .env
-  echo "Created .env from .env.example"
-fi
+echo "Waiting for PostgreSQL to start..."
+sleep 10
 
-echo "Setup complete!"
+docker compose ps
+
 echo ""
-echo " Run the API with:"
-echo "python -m uvicorn src.app.main:app --reload --host 0.0.0.0 --port 8000"
+echo "Setup complete!"
+echo "Visit the API docs at: http://localhost:8000/docs"
+echo "Health check:         http://localhost:8000/health"
+echo ""
+echo "To view logs:         docker compose logs -f"
+echo "To run tests:         docker compose exec api pytest -v"
+echo ""
+echo "To stop everything:   docker compose down"
