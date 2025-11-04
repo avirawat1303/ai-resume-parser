@@ -73,29 +73,48 @@ ai-resume-parser/
 
 ---
 
-## Authentication (JWT)
+#  Authentication (JWT)
 
-1. **Generate a JWT token:**
+Protected endpoints require a JWT access token.
 
-   ```bash
-   POST /api/v1/auth/login
-   ```
 
-   Example body:
+### Default Test Credentials
 
-   ```json
-   {
-     "username": "admin",
-     "password": "admin123"
-   }
-   ```
+For demo and testing purposes, use:
 
-2. **Use the token in your requests:**
-   ```
-   Authorization: Bearer <your_token_here>
-   ```
+```
+Username: ari12345  
+Password: test1234
+```
+
+
+### 1️. Generate a JWT Token
+
+**Endpoint:**
+
+```
+POST /api/v1/auth/token
+```
+
+**Example Body:**
+
+```json
+{
+  "username": "ari12345",
+  "password": "test1234"
+}
+```
 
 ---
+
+### 2. Use the Token in Requests
+
+Add this header to any protected endpoint (like `/upload`):
+
+```
+Authorization: Bearer <your_access_token>
+```
+
 
 ## Testing
 
