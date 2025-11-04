@@ -1,10 +1,10 @@
-# 🧠 AI Resume Parser
+# AI Resume Parser
 
 An intelligent resume parsing API powered by **FastAPI**, **NLP**, and **Machine Learning** — designed to extract, analyze, and structure candidate data with precision and scalability.
 
 ---
 
-## 🚀 Features
+## Features
 
 - Multi-format upload — PDF, DOCX, TXT, and image-based resumes
 - AI-driven entity extraction (name, email, skills, experience, etc.)
@@ -15,7 +15,7 @@ An intelligent resume parsing API powered by **FastAPI**, **NLP**, and **Machine
 
 ---
 
-## 🧩 Tech Stack
+## Tech Stack
 
 | Layer                | Technology                                           |
 | -------------------- | ---------------------------------------------------- |
@@ -28,7 +28,7 @@ An intelligent resume parsing API powered by **FastAPI**, **NLP**, and **Machine
 
 ---
 
-## ⚙️ Project Structure
+## Project Structure
 
 ```
 ai-resume-parser/
@@ -62,7 +62,7 @@ ai-resume-parser/
 
 ---
 
-## 🧠 API Endpoints
+## API Endpoints
 
 | Endpoint                 | Method | Description                                     |
 | ------------------------ | ------ | ----------------------------------------------- |
@@ -73,7 +73,7 @@ ai-resume-parser/
 
 ---
 
-## 🔐 Authentication (JWT)
+## Authentication (JWT)
 
 1. **Generate a JWT token:**
 
@@ -97,7 +97,7 @@ ai-resume-parser/
 
 ---
 
-## 🧪 Testing
+## Testing
 
 Run all tests inside Docker:
 
@@ -107,7 +107,7 @@ docker compose exec api pytest -v
 
 ---
 
-## 🐳 Docker Setup
+## Docker Setup
 
 ### Option 1: One-click Setup (Recommended)
 
@@ -126,8 +126,8 @@ This will:
 
 Once setup completes, visit:
 
-- 🌐 **API Docs**: http://localhost:8000/docs
-- 🩺 **Health Check**: http://localhost:8000/health
+- **API Docs**: http://localhost:8000/docs
+- **Health Check**: http://localhost:8000/health
 
 ### Option 2: Manual Setup
 
@@ -139,7 +139,7 @@ docker compose up -d
 
 ---
 
-## 🧰 Developer Commands
+## Developer Commands
 
 | Command                             | Description                 |
 | ----------------------------------- | --------------------------- |
@@ -151,7 +151,7 @@ docker compose up -d
 
 ---
 
-## 🧠 AI Processing Overview
+## AI Processing Overview
 
 The resume parser extracts structured information using a hybrid NLP pipeline combining:
 
@@ -163,7 +163,7 @@ This design ensures reliability, scalability, and compatibility across various f
 
 ---
 
-## 📘 API Documentation
+## API Documentation
 
 Auto-generated and accessible via:
 
@@ -172,3 +172,6 @@ http://localhost:8000/docs
 ```
 
 Includes OpenAPI specification with schemas for all request and response models.
+
+## Link To Presentation : 
+### https://docs.google.com/presentation/d/1MTgBz3FDCmFBLP2c79EpuZory95_wEV_/edit?usp=sharing&ouid=110955731191591180458&rtpof=true&sd=true
