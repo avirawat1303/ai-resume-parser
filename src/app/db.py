@@ -3,12 +3,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./local.db")
-
+DATABASE_URL = "postgresql+psycopg2://postgres:postgres@resume-db:5432/resume_db"
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-Base = declarative_base()  # ✅ define Base here
+Base = declarative_base()  
 
 def get_db():
     db = SessionLocal()
@@ -18,6 +17,6 @@ def get_db():
         db.close()
 
 def init_db():
-    from .models import Resume  # ✅ import here, inside function (avoids circular import)
+    from .models import Resume  
     Base.metadata.create_all(bind=engine)
     print("✅ Database initialized successfully.")

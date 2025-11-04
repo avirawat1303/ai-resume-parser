@@ -3,10 +3,11 @@ from jose import JWTError, jwt
 from fastapi import HTTPException, Depends, status
 from fastapi.security import OAuth2PasswordBearer
 
-SECRET_KEY = "super_secret_key"  
+SECRET_KEY = "super_secret_key"
+ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
     to_encode = data.copy()
